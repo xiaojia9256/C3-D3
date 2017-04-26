@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>C3的3d效果</title>
+    <style>
+        /*容器*/
+        .cont{
+            /*规定 3D 元素的透视效果*/
+            perspective:1000px;
+        }
+        /*pic盒子*/
+        .pic-box{
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin: 300px auto;
+            perspective-origin: 50% 50%;
+            /*.pic-box的Y轴*/
+            transform-style: preserve-3d;
+            animation: picRotate 5s;
+        }
+        .pic-box2{
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin: 300px auto;
+            perspective-origin: 50% 50%;
+            transform-style: preserve-3d;
+            /*.pic-box2的3D*/
+            transform-style: preserve-3d;
+            animation: box2Rotate 5s 10s infinite;           
+        }
+        /*pic通用的样式*/
+        .pic{
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: deeppink;
+            opacity: 0.5;
+        }
+        /*设置6个面*/
+        .pic-1{
+             background:red;
+             /*background-image:url(xxx); 也可以把背景颜色改成背景图片*/
+             transform:rotateY(0deg) translateZ(173.2px);
+             animation: pic1Rotate 5s 5s;
+             animation-fill-mode: forwards;
+         }
+        .pic-2{
+            background:orange;
+            transform:rotateY(60deg) translateZ(173.2px);
+            animation: pic2Rotate 5s 5s;
+            animation-fill-mode: forwards;
+        }
+        .pic-3{
+            background:yellow;
+            transform:rotateY(120deg) translateZ(173.2px);
+            animation: pic3Rotate 5s 5s;
+            animation-fill-mode: forwards;
+        }
+        .pic-4{
+            background:green;
+            transform:rotateY(180deg) translateZ(173.2px);
+            animation: pic4Rotate 5s 5s;
+            animation-fill-mode: forwards;
+        }
+        .pic-5{
+            background:blue;
+            transform:rotateY(240deg) translateZ(173.2px);
+            animation: pic5Rotate 5s 5s;
+            animation-fill-mode: forwards;
+        }
+        .pic-6{
+            background:purple;
+            transform:rotateY(300deg) translateZ(173.2px);
+            animation: pic6Rotate 5s 5s;
+            animation-fill-mode: forwards;
+        }
+        /*走马灯_沿着Y轴转*/
+        @keyframes picRotate{
+            0%{
+                transform:rotateY(360deg);
+            }
+            100%{
+                transform:rotateY(0deg);
+            }
+        }
+        /*走马灯=>六面体*/
+        @keyframes pic1Rotate{
+            0%{
+                transform:rotateY(0deg) translateZ(173.2px);
+            }
+            100%{
+            transform:rotateY(0deg) translateZ(100px);
+            }
+        }
+        @keyframes pic2Rotate{
+            0%{
+                transform:rotateY(60deg) translateZ(173.2px);
+            }
+            100%{
+            transform:rotateY(0deg) translateZ(-100px);
+            }
+        }
+        @keyframes pic3Rotate{
+            0%{
+                transform:rotateY(120deg) translateZ(173.2px);
+            }
+            100%{
+            transform:rotateX(90deg) translateZ(100px);
+            }
+        }
+        @keyframes pic4Rotate{
+            0%{
+                transform:rotateY(180deg) translateZ(173.2px);
+            }
+            100%{
+            transform:rotateX(90deg) translateZ(-100px);
+            }
+        }
+        @keyframes pic5Rotate{
+            0%{
+                transform:rotateY(240deg) translateZ(173.2px);
+            }
+            100%{
+            transform:rotateY(90deg) translateZ(-100px);
+            }
+        }
+        @keyframes pic6Rotate{
+            0%{
+                transform:rotateY(300deg) translateZ(173.2px);
+            }
+            100%{
+                transform:rotateY(90deg) translateZ(100px);
+            }
+        }
+        
+        /*六面体旋转动画*/
+        @keyframes box2Rotate {
+            0% {
+                transform: rotateX(0deg) rotateZ(0deg);
+            }
+            25%{
+                transform: rotateX(120deg) rotateY(180deg);
+            }
+            100% {
+                transform: rotateX(360deg) rotateY(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+<audio controls autoplay>
+  <source src="music.mp3" type="audio/mpeg">
+ </audio>
+ <!--
+     autoplay  马上播放 
+     controls  播放按钮
+     loop      当音频结束时重新开始播放
+     preload   如果出现该属性，则音频在页面加载时进行加载，并预备播放。如果使用 "autoplay"，则忽略该属性。
+ -->
+<div class="cont">
+    <div class="pic-box">
+        <div class="pic-box2">
+        <div class="pic pic-1">1</div>
+        <div class="pic pic-2">2</div>
+        <div class="pic pic-3">3</div>
+        <div class="pic pic-4">4</div>
+        <div class="pic pic-5">5</div>
+        <div class="pic pic-6">6</div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
